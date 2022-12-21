@@ -1,3 +1,3 @@
-class BucketDeleteFileImpl implements DeleteFile{
+export class BucketDeleteFileImpl implements DeleteFile{
     execute(): void {}
 }

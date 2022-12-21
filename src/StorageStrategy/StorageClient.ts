@@ -1,23 +1,31 @@
 export class StorageClient{
-    private saveFile: SaveFile;
-    private deleteFile: DeleteFile;
-    private retrieveFile: RetrieveFile;
-
-    constructor( saveFile: SaveFile, deleteFile: DeleteFile, retrieveFile: RetrieveFile ) {
-        this.saveFile = saveFile;
-        this.deleteFile = deleteFile;
-        this.retrieveFile = retrieveFile;
-    }
+    private saveFile?: SaveFile | void;
+    private deleteFile?: DeleteFile | void;
+    private retrieveFile?: RetrieveFile | void;
 
     public save(): void{
-        this.saveFile.execute();
+        this.saveFile?.execute();
     }
 
     public delete(): void{
-        this.deleteFile.execute();
+        this.deleteFile?.execute();
     }
 
     public read(): String | void{
-        return this.retrieveFile.execute();
+        return this.retrieveFile?.execute();
+    }
+
+    setSaveFile(saveFile: SaveFile): void {
+        this.saveFile = saveFile;
+    }
+    setDeleteFile(deleteFile: DeleteFile): void {
+        this.deleteFile = deleteFile;
+    }
+    setRetrieveFile(retrieveFile: RetrieveFile): void {
+        this.retrieveFile = retrieveFile;
     }
 }
+
+
+
+
