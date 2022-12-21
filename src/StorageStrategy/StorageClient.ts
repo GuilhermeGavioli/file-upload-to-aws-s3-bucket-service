@@ -1,4 +1,4 @@
-class StorageClient{
+export class StorageClient{
     private saveFile: SaveFile;
     private deleteFile: DeleteFile;
     private retrieveFile: RetrieveFile;
