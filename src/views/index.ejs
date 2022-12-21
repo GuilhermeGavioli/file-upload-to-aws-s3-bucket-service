@@ -10,7 +10,9 @@
 </head>
 <body>
     
-    <main class="main flex-center absolute-center">
+
+
+    <form action="/file" method="post" enctype="multipart/form-data" class="main flex-center absolute-center"></form>
         <!-- <div class="input-and-button-container">
             <input type="text" class="file-inputs" id="file-input">
             <input type="file" name="file" class="input-test">
@@ -18,10 +20,13 @@
         <label for="file-upload" name="file-upload" class="custom-file-upload-button">
             Your File here...
         </label>
-        <input id="file-upload" type="file"/>
+        
+        <input id="file-upload" type="file" name="file"/>
+
+
         <input type="text" class="file-inputs" id="filename-input">
-        <button class="default-button send-button" id="send-button">Send</button>
-    </main>
+        <button type="submit" class="default-button send-button" id="send-button">Send</button>
+    </form>
 
 </body>
 </html>

@@ -3,21 +3,23 @@ sendButton.addEventListener('click', handleFileRequest);
 
 
 async function handleFileRequest() {
-    const data = getInputedData();
-    const responseData = await fireFileRequest(data);
+    const formData = getInputedData();
+    const responseData = await fireFileRequest(formData);
     console.log(responseData)
 }
 
 
 function getInputedData() {
-    const fileInput = document.getElementById('file-upload')
-    const fileNameInput = document.getElementById("filename-input")
+    const fileInput = document.getElementById('file-upload');
+    const fileNameInput = document.getElementById("filename-input");
+    return convertToForm(fileNameInput.value, fileInput.files[0]);
+}
+
+function convertToForm(filename, file) {
     const form = new FormData()
-    form.append("files", fileInput.files[0]);
-    return {
-        file: form,
-        filename: fileNameInput.value
-    }
+    form.append('filename', filename)
+    form.append('file', file)
+    return form
 }
 
 async function fireFileRequest(fileData) {
@@ -31,11 +33,12 @@ async function fireFileRequest(fileData) {
 
 
 async function requestTemplate(method, route, data) {
+    console.log(data)
     const res = await fetch(`http://localhost:3000${route}`, {
         method: method,
-        body: JSON.stringify(data),
+        body: data,
         headers: {
-            'content-type': 'application/json'
+          
         },
     })
     return await res.json();
